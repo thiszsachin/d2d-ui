@@ -1,0 +1,29 @@
+.whatsapp-container{
+    position: sticky;
+    /* bottom: 20px; */
+    /* right: 20px; */
+    color: white;
+    font-weight: 600;
+    margin-left: 35px;
+    z-index: 9999;
+    background: #dbb13c;
+    display: inline;
+    border-radius: 55px;
+    padding: 18px 24px;
+}
+
+.whatsapp-container > a >  img {
+    width: 50px;
+    margin-left: 10px;
+}
+.whatsapp-container > a {
+    cursor: pointer;
+    margin-left: 10px;
+    text-decoration: none
+}
+.whatsapp-container > a > span {
+    cursor: pointer;
+    margin-left: 10px;
+    color: white;
+
+}
