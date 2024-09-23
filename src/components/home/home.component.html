@@ -1,31 +1,45 @@
 <!-- Hero Banner-->
 <!-- <section class="hero-home bg-cover bg-center" style="background: url(../../assets/images/)"> -->
 
-
-  <section class="booking-form">
+  <section class="bokked-box" *ngIf="isServiceBooked" >
+    <p class="booked-msg">Your Service is Booked with D2D Bike Service. Please wait for the call.
+       Our Mechanic will contact you.</p>
+  </section>
+  <section *ngIf="!isServiceBooked" class="booking-form bokked-box">
     <form (ngSubmit)="bookService()">
+      <h5>Fill form to Book Bike/Scooty Servive</h5>
       <div class="form-group">
         <label for="exampleInputEmail1">Name</label>
         <input type="text" name="customerName" [(ngModel)]="customerName" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter name">
+        <small *ngIf="customerName=='' && showError" class="form-text red-text">Customer Name is Required.</small>
       </div>
       <div class="form-group">
         <label for="exampleInputEmail1">Vehicle Model</label>
         <input type="text" name="vehicleModel" [(ngModel)]="vehicleModel" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Vehicle model">
+        <small *ngIf="vehicleModel=='' && showError" class="form-text red-text">Vehicle Model is Required.</small>
+
       </div>
+
       <div class="form-group">
         <label for="exampleInputEmail1">Contact</label>
         <input type="number" name="contact" [(ngModel)]="contact" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter contact">
+        <small *ngIf="contact.toString().length != 10 && showError" class="form-text red-text">10 digit contact is Required.</small>
+
       </div>
       <div class="form-group">
         <label for="exampleInputEmail1">Complete Address</label>
         <input type="text" name="address" class="form-control" [(ngModel)]="address" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Complete Address">
+        <small *ngIf="address=='' && showError" class="form-text red-text">Address is Required.</small>
+
       </div>
       <div class="form-group">
         <label for="exampleInputEmail1">Service Date</label>
         <input type="date" name="bookingDate" [(ngModel)]="bookingDate"  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter booking date">
+        <small *ngIf="bookingDate=='' && showError" class="form-text red-text">Booking Date is Required.</small>
+
       </div>
 
-      <button type="submit" class="btn btn-primary">Book Service</button>
+      <button [disabled]="isServiceBooked" type="submit" class="btn btn-primary">Book Service</button>
     </form>
    </section>
   <section class="hero-home bg-cover bg-center">

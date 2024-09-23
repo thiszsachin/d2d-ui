@@ -23,10 +23,34 @@
 .booking-form{
   width: 40%;
   margin: 0 auto;
+  margin-top: 10px;
+
 }
+
+
+.bokked-box{
+  padding: 10px;
+}
+.booked-msg{
+  color: white;
+    width: 38%;
+    margin: 0 auto;
+    text-align: center;
+    background-color: rgb(44, 154, 44);
+    padding: 11px;
+    border-radius: 20px
+}
+.red-text{
+  color: red;
+}
+
 
 @media screen and (max-width:480px) {
   .booking-form{
     width: 90%;
   }
+  .booked-msg{
+    width: 80%;
 }
+}
+
