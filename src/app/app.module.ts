@@ -6,6 +6,9 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from 'src/components/home/home.component';
 import { FooterComponent } from 'src/components/footer/footer.component';
 import { HeaderComponent } from 'src/components/header/header.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule} from '@angular/common/http'
+
 
 @NgModule({
   declarations: [
@@ -16,7 +19,11 @@ import { HeaderComponent } from 'src/components/header/header.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule
+
+
   ],
   providers: [],
   bootstrap: [AppComponent]

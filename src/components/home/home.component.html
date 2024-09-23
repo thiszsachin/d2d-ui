@@ -1,8 +1,38 @@
 <!-- Hero Banner-->
 <!-- <section class="hero-home bg-cover bg-center" style="background: url(../../assets/images/)"> -->
-<section class="hero-home bg-cover bg-center">
+
+
+  <section class="booking-form">
+    <form (ngSubmit)="bookService()">
+      <div class="form-group">
+        <label for="exampleInputEmail1">Name</label>
+        <input type="text" name="customerName" [(ngModel)]="customerName" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter name">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Vehicle Model</label>
+        <input type="text" name="vehicleModel" [(ngModel)]="vehicleModel" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Vehicle model">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Contact</label>
+        <input type="number" name="contact" [(ngModel)]="contact" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter contact">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Complete Address</label>
+        <input type="text" name="address" class="form-control" [(ngModel)]="address" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Complete Address">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Service Date</label>
+        <input type="date" name="bookingDate" [(ngModel)]="bookingDate"  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter booking date">
+      </div>
+
+      <button type="submit" class="btn btn-primary">Book Service</button>
+    </form>
+   </section>
+  <section class="hero-home bg-cover bg-center">
     <div class="container index-forward py-5 mb-5">
       <div class="row text-white">
+
+
         <div class="col-lg-8">
           <h1 class="text-uppercase mb-0 text-shadow">D2D Bike Service</h1>
           <p class="h5 my-4 text-shadow">Quality Two-wheeler Service at Home</p>
@@ -13,7 +43,8 @@
     </div>
   </section>
   <!-- Info Section-->
-  <section class="info p-0 bg-light">
+
+  <section id="about" class="info p-0 bg-light">
     <div class="container bg-white">
       <div class="row py-5 border-top border-md border-primary">
         <div class="col-lg-4 border-right mb-4 mb-lg-0">
@@ -110,7 +141,7 @@
         <li class="nav-item flex-sm-fill"><a class="nav-link" id="pills-Physician-tab" data-toggle="pill" href="#pills-Physician" role="tab" aria-controls="pills-Physician" aria-selected="false">RSA</a></li>
       </ul>
       <div class="tab-content" id="pills-tabContent">
-        <div class="tab-pane py-4 fade show active" id="pills-cosmetic" role="tabpanel" aria-labelledby="pills-cosmetic-tab"> 
+        <div class="tab-pane py-4 fade show active" id="pills-cosmetic" role="tabpanel" aria-labelledby="pills-cosmetic-tab">
           <div class="row">
             <div class="col-lg-6">
               <div class="d-flex align-items-center mb-2">
@@ -166,7 +197,7 @@
             </div>
           </div>
         </div>
-        <div class="tab-pane py-4 fade" id="pills-Medications" role="tabpanel" aria-labelledby="pills-Medications-tab"> 
+        <div class="tab-pane py-4 fade" id="pills-Medications" role="tabpanel" aria-labelledby="pills-Medications-tab">
           <div class="row">
             <div class="col-lg-6">
               <div class="d-flex align-items-center mb-2">
@@ -210,7 +241,7 @@
             </div>
           </div>
         </div>
-        <div class="tab-pane py-4 fade" id="pills-Physician" role="tabpanel" aria-labelledby="pills-Physician-tab"> 
+        <div class="tab-pane py-4 fade" id="pills-Physician" role="tabpanel" aria-labelledby="pills-Physician-tab">
           <div class="row">
             <div class="col-lg-6">
               <div class="d-flex align-items-center mb-2">
@@ -431,7 +462,7 @@
               <div class="card doctor border-0">
                 <div class="card-body p-0 shadow-sm logo-card-wrapper">
                   <div class="position-relative"><img class="img-fluid border-top border-md border-primary brand-logo" src="../../assets/images/Bajaj_auto_logo.svg" alt="">
-                    <!-- <div class="doctor-overlay">   
+                    <!-- <div class="doctor-overlay">
                       <ul class="list-inline mb-0 doctor-social">
                         <li class="list-inline-item"><a class="doctor-social-link" href="#"><i class="fab fa-facebook-f"></i></a></li>
                         <li class="list-inline-item"><a class="doctor-social-link" href="#"><i class="fab fa-twitter"></i></a></li>
@@ -453,7 +484,7 @@
               <div class="card doctor border-0">
                 <div class="card-body p-0 shadow-sm logo-card-wrapper">
                   <div class="position-relative"><img class="img-fluid border-top border-md border-primary brand-logo" src="../../assets/images/suzuki3.webp" alt="">
-                    <!-- <div class="doctor-overlay">   
+                    <!-- <div class="doctor-overlay">
                       <ul class="list-inline mb-0 doctor-social">
                         <li class="list-inline-item"><a class="doctor-social-link" href="#"><i class="fab fa-facebook-f"></i></a></li>
                         <li class="list-inline-item"><a class="doctor-social-link" href="#"><i class="fab fa-twitter"></i></a></li>
@@ -475,7 +506,7 @@
               <div class="card doctor border-0">
                 <div class="card-body p-0 shadow-sm logo-card-wrapper">
                   <div class="position-relative"><img class="img-fluid border-top border-md border-primary brand-logo" src="../../assets/images/vespa.png" alt="">
-                    <!-- <div class="doctor-overlay">   
+                    <!-- <div class="doctor-overlay">
                       <ul class="list-inline mb-0 doctor-social">
                         <li class="list-inline-item"><a class="doctor-social-link" href="#"><i class="fab fa-facebook-f"></i></a></li>
                         <li class="list-inline-item"><a class="doctor-social-link" href="#"><i class="fab fa-twitter"></i></a></li>
@@ -496,7 +527,7 @@
               <div class="card doctor border-0">
                 <div class="card-body p-0 shadow-sm logo-card-wrapper">
                   <div class="position-relative"><img class="img-fluid border-top border-md border-primary brand-logo" src="../../assets/images/royal.jpg" alt="">
-                    <!-- <div class="doctor-overlay">   
+                    <!-- <div class="doctor-overlay">
                       <ul class="list-inline mb-0 doctor-social">
                         <li class="list-inline-item"><a class="doctor-social-link" href="#"><i class="fab fa-facebook-f"></i></a></li>
                         <li class="list-inline-item"><a class="doctor-social-link" href="#"><i class="fab fa-twitter"></i></a></li>
@@ -546,13 +577,13 @@
     </div>
   </section>
   <!-- Contact Section-->
-  <section class="contact py-5 bg-primary text-white">
+  <section id="contact" class="contact py-5 bg-primary text-white">
     <div class="container">
       <div class="row">
         <div class="col-lg-4 mb-5 mb-lg-0">
           <div class="d-flex align-items-center">
             <div class="contact-icon"><i class="fas fa-phone"></i></div>
-            <div class="ml-3">       
+            <div class="ml-3">
               <h3 class="h5 mb-0">8587078424</h3>
               <p class="small mb-0">Have a question? call us now</p>
             </div>
@@ -561,7 +592,7 @@
         <div class="col-lg-4 mb-5 mb-lg-0">
           <div class="d-flex align-items-center">
             <div class="contact-icon"><i class="far fa-envelope"></i></div>
-            <div class="ml-3">       
+            <div class="ml-3">
               <h3 class="h5 mb-0">d2dbikeservice@gmail.com</h3>
               <p class="small mb-0">Need support? Drop us an email</p>
             </div>
@@ -570,7 +601,7 @@
         <div class="col-lg-4">
           <div class="d-flex align-items-center">
             <div class="contact-icon"><i class="far fa-clock"></i></div>
-            <div class="ml-3">       
+            <div class="ml-3">
               <h3 class="h5 mb-0">Mon – Fri 07:00 – 21:00</h3>
               <p class="small mb-0">We are open On</p>
             </div>
