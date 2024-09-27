@@ -13,6 +13,7 @@ export class HomeComponent {
   contact:any=''
   address:any=''
   bookingDate:any=''
+  userEmail:any=''
   isServiceBooked:boolean=false;
   showError:boolean=false
   constructor(private http:HttpClient){
@@ -24,6 +25,7 @@ export class HomeComponent {
     const bookingData:any={
       customerName:this.customerName,
         vehicleModel:this.vehicleModel,
+        userEmail:this.userEmail,
         address:this.address,
         city:"ayodhya",
         contact:this.contact,
@@ -40,7 +42,7 @@ export class HomeComponent {
         updatedBy:"Customer",
   }
 
-  if(this.customerName == '' || this.vehicleModel == ''|| (this.contact.toString().length) != 10  || this.address == ''|| this.bookingDate == ''){
+  if(this.customerName == '' || this.vehicleModel == ''|| (this.contact.toString().length) != 10  || this.address == ''|| this.bookingDate == '' || this.userEmail == ''){
     this.showError = true;
   }else{
     this.http.post("https://d2d-booking-be-fzd-api-4.onrender.com/api/bookings", bookingData).subscribe(res => {

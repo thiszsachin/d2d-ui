@@ -19,6 +19,13 @@
         <small *ngIf="vehicleModel=='' && showError" class="form-text red-text">Vehicle Model is Required.</small>
 
       </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Email</label>
+        <input type="email" name="userEmail" [(ngModel)]="userEmail" #userEmailInput class="form-control" id="userEmailcv" aria-describedby="emailHelp" placeholder="Enter Email">
+        <small *ngIf="userEmail=='' && showError" class="form-text red-text">Valid Email is Required.</small>
+        <!-- <small *ngIf="userEmailInput" class="form-text red-text">Valid Email is Required.</small> -->
+
+      </div>
 
       <div class="form-group">
         <label for="exampleInputEmail1">Contact</label>
