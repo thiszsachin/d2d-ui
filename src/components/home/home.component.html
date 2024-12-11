@@ -36,7 +36,7 @@
       </div>
       <div class="form-group">
         <label for="exampleInputEmail1">Service Date</label>
-        <input type="date" name="bookingDate" [(ngModel)]="bookingDate"  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter booking date">
+        <input [min]="minDate" type="date" name="bookingDate" [(ngModel)]="bookingDate"  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter booking date">
         <small *ngIf="bookingDate=='' && showError" class="form-text red-text">Booking Date is Required.</small>
 
       </div>
@@ -588,7 +588,7 @@
       <div class="row align-items-center">
         <div class="col-lg-6 mb-5 mb-lg-0">
           <div class="card shadow-sm border-0">
-            <div class="card-body border-top border-md border-primary p-5">
+            <div class="card-body border-top border-md border-primary p-2">
               <ul class="list-unstyled mb-0">
                 <li class="d-flex align-items-center justify-content-between pb-3 px-4"><strong class="h6 mb-0">Monday </strong><span class="mb-0">9:00 am - 07:00 pm</span></li>
                 <li class="d-flex align-items-center justify-content-between py-3 bg-light px-4"><strong class="h6 mb-0">Tuesday </strong><span class="mb-0">9:00 am - 07:00 pm</span></li>
@@ -605,7 +605,9 @@
           <i class="fa fa-clock fa-4x text-primary mb-4">   </i>
           <h3 class="h4">RSA</h3>
           <p class="text-muted mb-3 px-lg-5">If you need a mechanic urgently, call for RSA 24*7 Service.</p>
-          <div class="text-primary "><a class="btn btn-outline-primary h5 px-4 py-3" href="tel:8587078424"> <i class="fas fa-phone-square mr-2 rotate-180"></i>+91 8587078424</a></div>
+          <div class="text-primary ">
+            <a class="btn btn-outline-primary h5 px-4 py-3" href="tel:8587078424"> <i class="fas fa-phone-square mr-2 rotate-180"></i>+91 8587078424</a>
+          </div>
         </div>
       </div>
     </div>
@@ -620,7 +622,8 @@
               <i class="fa fa-phone"></i>
             </div>
             <div class="ml-3">
-              <h3 class="h5 mb-0">8587078424</h3>
+              <a class="h5 mb-0" href="tel:8587078424">+91 8587078424</a>
+
               <p class="small mb-0">Have a question? call us now</p>
             </div>
           </div>
@@ -629,7 +632,12 @@
           <div class="d-flex align-items-center">
             <div class="contact-icon"><i class="far fa-envelope"></i></div>
             <div class="ml-3">
-              <h3 class="h5 mb-0">d2dbikeservice&#64;gmail.com</h3>
+              <a href="mailto:d2dbikeservice@gmail.com" target="_blank">
+                <span class="mail-sent">
+
+                  Write a Mail
+                </span>
+              </a>
               <p class="small mb-0">Need support? Drop us an email</p>
             </div>
           </div>

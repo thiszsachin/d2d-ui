@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { window } from 'rxjs';
 
 @Component({
@@ -7,7 +7,7 @@ import { window } from 'rxjs';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
   customerName:any=''
   vehicleModel:any=''
   contact:any=''
@@ -17,9 +17,17 @@ export class HomeComponent {
   isServiceBooked:boolean=false;
   showError:boolean=false
   isBookingClicked=false;
+  minDate!: string;
   constructor(private http:HttpClient){
 
   }
+
+  ngOnInit(): void {
+    const today = new Date();
+    this.minDate = today.toISOString().split('T')[0];
+  }
+
+
 
   bookService(){
     this.showError = false;

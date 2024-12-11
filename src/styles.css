@@ -853,22 +853,23 @@ input.text-white::placeholder {
   color: #adb5bd;
   transition: all 0.5s;
 }
-.services-item:hover {
+/* .services-item:hover {
   background: #0cb8b6;
   color: #fff;
-}
-.services-item:hover .services-item-text {
+} */
+/* .services-item:hover .services-item-text {
   color: #fff;
-}
-.services-item:hover .services-icon {
+} */
+/* .services-item:hover .services-icon {
   background: #fff;
   color: #0cb8b6;
-}
-.services-item:hover .services-icon::before {
+} */
+/* .services-item:hover .services-icon::before {
   border-color: #fff;
-}
+} */
 .services-item {
   transition: all 0.5s;
+  background: #82efee !important;
 }
 .services-icon {
   width: 80px;

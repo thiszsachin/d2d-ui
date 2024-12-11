@@ -79,3 +79,8 @@ button:disabled{
 .rotate-180{
   transform: rotate(180deg);
 }
+.mail-sent{
+  color: white !important;
+  font-weight: 600;
+  font-size: 20px;
+}
