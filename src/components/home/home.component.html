@@ -1,10 +1,7 @@
 <!-- Hero Banner-->
 <!-- <section class="hero-home bg-cover bg-center" style="background: url(../../assets/images/)"> -->
 
-  <section class="bokked-box" *ngIf="isServiceBooked" >
-    <p class="booked-msg">Your Service is Booked with D2D Bike Service. Please wait for the call.
-       Our Mechanic will contact you.</p>
-  </section>
+
   <section *ngIf="!isServiceBooked" class="booking-form bokked-box">
     <form (ngSubmit)="bookService()">
       <h5>Fill form to Book Bike/Scooty Servive</h5>
@@ -19,13 +16,11 @@
         <small *ngIf="vehicleModel=='' && showError" class="form-text red-text">Vehicle Model is Required.</small>
 
       </div>
-      <div class="form-group">
+      <!-- <div class="form-group">
         <label for="exampleInputEmail1">Email</label>
         <input type="email" name="userEmail" [(ngModel)]="userEmail" #userEmailInput class="form-control" id="userEmailcv" aria-describedby="emailHelp" placeholder="Enter Email">
         <small *ngIf="userEmail=='' && showError" class="form-text red-text">Valid Email is Required.</small>
-        <!-- <small *ngIf="userEmailInput" class="form-text red-text">Valid Email is Required.</small> -->
-
-      </div>
+      </div> -->
 
       <div class="form-group">
         <label for="exampleInputEmail1">Contact</label>
@@ -45,11 +40,26 @@
         <small *ngIf="bookingDate=='' && showError" class="form-text red-text">Booking Date is Required.</small>
 
       </div>
+      <div class="loader-submit" *ngIf="isBookingClicked">
+        <div class="spinner-border" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+        <span>Please Wait...</span>
+      </div>
 
-      <button [disabled]="isServiceBooked" type="submit" class="btn btn-primary">Book Service</button>
+      <button [disabled]="isBookingClicked" type="submit" class="btn btn-primary">Book Service</button>
     </form>
    </section>
-  <section class="hero-home bg-cover bg-center">
+
+   <section class="bokked-box-msg" *ngIf="isServiceBooked" >
+    <p class="booked-msg">
+      <strong>
+        Thank you for booking with D2D Bike Service.
+      </strong>
+      <br>
+      Your service request has been successfully received. Please expect a call shortly from our mechanic, who will contact you to confirm the details.</p>
+  </section>
+  <section class="hero-home bg-cover bg-center" id="about">
     <div class="container index-forward py-5 mb-5">
       <div class="row text-white">
 
@@ -65,7 +75,7 @@
   </section>
   <!-- Info Section-->
 
-  <section id="about" class="info p-0 bg-light">
+  <section  class="info p-0 bg-light">
     <div class="container bg-white">
       <div class="row py-5 border-top border-md border-primary">
         <div class="col-lg-4 border-right mb-4 mb-lg-0">
@@ -614,7 +624,7 @@
           <div class="d-flex align-items-center">
             <div class="contact-icon"><i class="far fa-envelope"></i></div>
             <div class="ml-3">
-              <h3 class="h5 mb-0">d2dbikeservice@gmail.com</h3>
+              <h3 class="h5 mb-0">d2dbikeservice&#64;gmail.com</h3>
               <p class="small mb-0">Need support? Drop us an email</p>
             </div>
           </div>

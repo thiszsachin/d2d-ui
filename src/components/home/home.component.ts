@@ -13,9 +13,10 @@ export class HomeComponent {
   contact:any=''
   address:any=''
   bookingDate:any=''
-  userEmail:any=''
+  userEmail:any='websited2d@gmail.com'
   isServiceBooked:boolean=false;
   showError:boolean=false
+  isBookingClicked=false;
   constructor(private http:HttpClient){
 
   }
@@ -42,16 +43,24 @@ export class HomeComponent {
         updatedBy:"Customer",
   }
 
-  if(this.customerName == '' || this.vehicleModel == ''|| (this.contact.toString().length) != 10  || this.address == ''|| this.bookingDate == '' || this.userEmail == ''){
+  if(this.customerName == '' || this.vehicleModel == ''|| (this.contact.toString().length) != 10  || this.address == ''|| this.bookingDate == ''){
     this.showError = true;
   }else{
+    this.isBookingClicked = true
     this.http.post("https://d2d-booking-be-fzd-api-4.onrender.com/api/bookings", bookingData).subscribe(res => {
+
+
       this.isServiceBooked = true;
+      this.isBookingClicked = false;
+      this.customerName=''
+      this.vehicleModel=''
+      this.contact=''
+      this.address=''
+      this.bookingDate=''
+      this.userEmail='websited2d@gmail.com'
       setTimeout(() => {
         this.isServiceBooked = false;
       }, 10000)
-      console.log("Booked Successfully.");
-
     })
   }
   }

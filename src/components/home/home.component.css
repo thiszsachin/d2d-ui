@@ -30,6 +30,15 @@
 
 .bokked-box{
   padding: 10px;
+
+}
+.bokked-box-msg{
+  padding: 10px;
+  /* position: absolute;
+  top: 30px; */
+  /* right: 5px; */
+  z-index: 999;
+
 }
 .booked-msg{
   color: white;
@@ -52,5 +61,18 @@
   .booked-msg{
     width: 80%;
 }
+}
+
+.loader-submit{
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  gap: 10px;
+  border: 1px solid black;
+  width: 200px;
+  padding: 5px;
+}
+button:disabled{
+  cursor: not-allowed;
 }
 
