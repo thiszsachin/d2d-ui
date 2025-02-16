@@ -8,6 +8,7 @@ import { FooterComponent } from 'src/components/footer/footer.component';
 import { HeaderComponent } from 'src/components/header/header.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule} from '@angular/common/http'
+import { BookingDetailsComponent } from 'src/components/booking-details/booking-details.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { HttpClientModule} from '@angular/common/http'
     AppComponent,
     HomeComponent,
     FooterComponent,
-    HeaderComponent
+    HeaderComponent,
+    BookingDetailsComponent
   ],
   imports: [
     BrowserModule,

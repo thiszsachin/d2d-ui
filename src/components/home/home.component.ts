@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { window } from 'rxjs';
 
 @Component({
@@ -18,7 +19,7 @@ export class HomeComponent implements OnInit {
   showError:boolean=false
   isBookingClicked=false;
   minDate!: string;
-  constructor(private http:HttpClient){
+  constructor(private http:HttpClient, private router:Router){
 
   }
 
@@ -32,7 +33,7 @@ export class HomeComponent implements OnInit {
   bookService(){
     this.showError = false;
     const bookingData:any={
-      customerName:this.customerName,
+        customerName:this.customerName,
         vehicleModel:this.vehicleModel,
         userEmail:this.userEmail,
         address:this.address,
@@ -48,7 +49,7 @@ export class HomeComponent implements OnInit {
         isNewBooking:true,
         comment:'',
         assignedMechanic:'',
-        updatedBy:"Customer",
+        addedBy:"Customer",
   }
 
   if(this.customerName == '' || this.vehicleModel == ''|| (this.contact.toString().length) != 10  || this.address == ''|| this.bookingDate == ''){
@@ -56,6 +57,9 @@ export class HomeComponent implements OnInit {
   }else{
     this.isBookingClicked = true
     this.http.post("https://d2d-booking-be-fzd-api-4.onrender.com/api/bookings", bookingData).subscribe(res => {
+      this.router.navigate(['/booking'], { state: { bookingData } });
+      console.log('bookingData', bookingData);
+
 
 
       this.isServiceBooked = true;

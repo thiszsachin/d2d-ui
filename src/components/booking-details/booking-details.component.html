@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+      <div class="card shadow-lg">
+        <div class="card-body">
+          <h2 class="text-center sparkle-effect mb-4">Your Booking is Successful!</h2>
+          <div class="booking-details">
+            <div class="row mb-3">
+              <div class="col-4"><strong>Name:</strong></div>
+              <div class="col-8">{{ bookingDetails.customerName }}</div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-4"><strong>Vehicle Model:</strong></div>
+              <div class="col-8">{{  bookingDetails.vehicleModel }}</div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-4"><strong>Contact:</strong></div>
+              <div class="col-8">{{ bookingDetails.contact }}</div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-4"><strong>Address:</strong></div>
+              <div class="col-8">{{ bookingDetails.address }}</div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-4"><strong>Service Date:</strong></div>
+              <div class="col-8">{{ bookingDetails.serviceScheduledDate | date : "d MMM, y" }}</div>
+            </div>
+          </div>
+
+          <!-- Footer Section -->
+          <div class="mt-4 text-center">
+            <p><strong>Our mechanic will call you before the visit on {{ bookingDetails.serviceScheduledDate | date : "d MMM, y" }}.</strong></p>
+            <p>For any inquiries, contact Himanshu at: <strong>9118308124</strong></p>
+            <p>For any complaint, contact D2D Support at: <strong>8587078424</strong></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
