@@ -7,6 +7,7 @@ const routes: Routes = [
   { path: '', component: HomeComponent },  // Home page route
   { path: 'booking', component: BookingDetailsComponent },  // Booking page route
   { path: '**', redirectTo: '', pathMatch: 'full' }  // Wildcard route to redirect to Home
+
 ];
 
 @NgModule({
