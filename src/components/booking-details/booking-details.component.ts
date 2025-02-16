@@ -33,10 +33,10 @@ export class BookingDetailsComponent {
     console.log('this.bookingDetails', this.bookingDetails);
 
 
-    // if (!this.bookingDetails) {
-    //   // Handle case where no data is passed, maybe redirect to home or show an error
-    //   this.router.navigate(['/']);
-    // }
+    if (!this.bookingDetails) {
+      // Handle case where no data is passed, maybe redirect to home or show an error
+      this.router.navigate(['/']);
+    }
   }
 
 }
