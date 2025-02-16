@@ -13,6 +13,7 @@
       <div class="form-group">
         <label for="vehicleModel">Vehicle Model</label>
         <input type="text" name="vehicleModel" [(ngModel)]="vehicleModel" class="form-control" id="vehicleModel" aria-describedby="emailHelp" placeholder="Enter Vehicle model">
+        <small  class="form-text">Ex: Honda Activa, Bajaj Pulsar</small>
         <small *ngIf="vehicleModel=='' && showError" class="form-text red-text">Vehicle Model is Required.</small>
 
       </div>
