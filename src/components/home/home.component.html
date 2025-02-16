@@ -4,7 +4,7 @@
 
   <section *ngIf="!isServiceBooked" class="booking-form bokked-box">
     <form (ngSubmit)="bookService()">
-      <h5>Fill form to Book Bike/Scooty Servive</h5>
+      <h5>Fill form to Book Bike/Scooty Service</h5>
       <div class="form-group">
         <label for="exampleInputEmail1">Name</label>
         <input type="text" name="customerName" [(ngModel)]="customerName" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter name">
