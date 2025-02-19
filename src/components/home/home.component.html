@@ -32,12 +32,13 @@
       <div class="form-group">
         <label for="address">Complete Address</label>
         <input type="text" name="address" class="form-control" [(ngModel)]="address" id="address" aria-describedby="emailHelp" placeholder="Enter Complete Address">
+        <small  class="form-text">Only available in Ayodhya City</small>
         <small *ngIf="address=='' && showError" class="form-text red-text">Address is Required.</small>
 
       </div>
       <div class="form-group">
         <label for="bookingDate">Service Date</label>
-        <input [min]="minDate" type="date" name="bookingDate" [(ngModel)]="bookingDate" id="bookingDate" class="form-control"  aria-describedby="emailHelp" placeholder="Enter booking date">
+        <input [min]="minDate" [max]="maxDate" type="date" name="bookingDate" [(ngModel)]="bookingDate" id="bookingDate" class="form-control"  aria-describedby="emailHelp" placeholder="Enter booking date">
         <small *ngIf="bookingDate=='' && showError" class="form-text red-text">Booking Date is Required.</small>
 
       </div>

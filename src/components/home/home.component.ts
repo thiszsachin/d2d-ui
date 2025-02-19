@@ -19,13 +19,21 @@ export class HomeComponent implements OnInit {
   showError:boolean=false
   isBookingClicked=false;
   minDate!: string;
+  maxDate!: string;
   constructor(private http:HttpClient, private router:Router){
 
   }
 
   ngOnInit(): void {
-    const today = new Date();
-    this.minDate = today.toISOString().split('T')[0];
+
+    const currentDate = new Date();
+
+    // Set the minDate to today's date
+    this.minDate = currentDate.toISOString().split('T')[0];
+
+    // Calculate the last date of the current month
+    const lastDayOfCurrentMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0);
+    this.maxDate = lastDayOfCurrentMonth.toISOString().split('T')[0];
   }
 
 
