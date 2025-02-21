@@ -1,135 +1,161 @@
-<!-- Hero Banner-->
-<!-- <section class="hero-home bg-cover bg-center" style="background: url(../../assets/images/)"> -->
+<section class="welcome-hindi" id="about">
+  <!-- <div class="container index-forward">
+    <div class="row text-white"> -->
 
+      <h4 class="text-uppercase lined lined-center text-white">
+        अब कराएँ
+        <span class="text-primary">बाइक/स्कूटी सर्विस </span>अपने घर पर</h4>
+        <p class="city-text">अयोध्या शहर में</p>
+    <!-- </div>
+  </div> -->
+</section>
 
-  <section *ngIf="!isServiceBooked" class="booking-form bokked-box">
-    <form (ngSubmit)="bookService()">
-      <h5>Fill form to Book Bike/Scooty Service</h5>
-      <div class="form-group">
-        <label for="customerName">Name</label>
-        <input type="text" name="customerName" [(ngModel)]="customerName" class="form-control" id="customerName" aria-describedby="emailHelp" placeholder="Enter name">
-        <small *ngIf="customerName=='' && showError" class="form-text red-text">Customer Name is Required.</small>
-      </div>
-      <div class="form-group">
-        <label for="vehicleModel">Vehicle Model</label>
-        <input type="text" name="vehicleModel" [(ngModel)]="vehicleModel" class="form-control" id="vehicleModel" aria-describedby="emailHelp" placeholder="Enter Vehicle model">
-        <small  class="form-text">Ex: Honda Activa, Bajaj Pulsar</small>
-        <small *ngIf="vehicleModel=='' && showError" class="form-text red-text">Vehicle Model is Required.</small>
+<section *ngIf="!isServiceBooked" class="booking-form bokked-box">
+  <form (ngSubmit)="bookService()">
+    <h5>Fill form to Book Bike/Scooty Service</h5>
+    <div class="form-group">
+      <label for="customerName">Name</label>
+      <input type="text" name="customerName" [(ngModel)]="customerName" class="form-control" id="customerName"
+        aria-describedby="emailHelp" placeholder="Enter name">
+      <small *ngIf="customerName=='' && showError" class="form-text red-text">Customer Name is Required.</small>
+    </div>
+    <div class="form-group">
+      <label for="vehicleModel">Vehicle Model</label>
+      <input type="text" name="vehicleModel" [(ngModel)]="vehicleModel" class="form-control" id="vehicleModel"
+        aria-describedby="emailHelp" placeholder="Enter Vehicle model">
+      <small class="form-text">Ex: Honda Activa, Bajaj Pulsar</small>
+      <small *ngIf="vehicleModel=='' && showError" class="form-text red-text">Vehicle Model is Required.</small>
 
-      </div>
-      <!-- <div class="form-group">
+    </div>
+    <!-- <div class="form-group">
         <label for="exampleInputEmail1">Email</label>
         <input type="email" name="userEmail" [(ngModel)]="userEmail" #userEmailInput class="form-control" id="userEmailcv" aria-describedby="emailHelp" placeholder="Enter Email">
         <small *ngIf="userEmail=='' && showError" class="form-text red-text">Valid Email is Required.</small>
       </div> -->
 
-      <div class="form-group">
-        <label for="contact">Contact</label>
-        <input type="number" name="contact" [(ngModel)]="contact" class="form-control" id="contact" aria-describedby="emailHelp" placeholder="Enter contact">
-        <small *ngIf="contact.toString().length != 10 && showError" class="form-text red-text">10 digit contact is Required.</small>
+    <div class="form-group">
+      <label for="contact">Contact</label>
+      <input type="number" name="contact" [(ngModel)]="contact" class="form-control" id="contact"
+        aria-describedby="emailHelp" placeholder="Enter contact">
+      <small *ngIf="contact.toString().length != 10 && showError" class="form-text red-text">10 digit contact is
+        Required.</small>
 
-      </div>
-      <div class="form-group">
-        <label for="address">Complete Address</label>
-        <input type="text" name="address" class="form-control" [(ngModel)]="address" id="address" aria-describedby="emailHelp" placeholder="Enter Complete Address">
-        <small  class="form-text">Only available in Ayodhya City</small>
-        <small *ngIf="address=='' && showError" class="form-text red-text">Address is Required.</small>
+    </div>
+    <div class="form-group">
+      <label for="address">Complete Address</label>
+      <input type="text" name="address" class="form-control" [(ngModel)]="address" id="address"
+        aria-describedby="emailHelp" placeholder="Enter Complete Address">
+      <small class="form-text">Only available in Ayodhya City</small>
+      <small *ngIf="address=='' && showError" class="form-text red-text">Address is Required.</small>
 
-      </div>
-      <div class="form-group">
-        <label for="bookingDate">Service Date</label>
-        <input [min]="minDate" [max]="maxDate" type="date" name="bookingDate" [(ngModel)]="bookingDate" id="bookingDate" class="form-control"  aria-describedby="emailHelp" placeholder="Enter booking date">
-        <small *ngIf="bookingDate=='' && showError" class="form-text red-text">Booking Date is Required.</small>
+    </div>
+    <div class="form-group">
+      <label for="bookingDate">Service Date</label>
+      <input [min]="minDate" [max]="maxDate" type="date" name="bookingDate" [(ngModel)]="bookingDate" id="bookingDate"
+        class="form-control" aria-describedby="emailHelp" placeholder="Enter booking date">
+      <small *ngIf="bookingDate=='' && showError" class="form-text red-text">Booking Date is Required.</small>
 
+    </div>
+    <div class="loader-submit" *ngIf="isBookingClicked">
+      <div class="spinner-border" role="status">
+        <span class="sr-only">Loading...</span>
       </div>
-      <div class="loader-submit" *ngIf="isBookingClicked">
-        <div class="spinner-border" role="status">
-          <span class="sr-only">Loading...</span>
+      <span>Please Wait...</span>
+    </div>
+
+    <button [disabled]="isBookingClicked" type="submit" class="btn btn-primary">Book Service</button>
+  </form>
+</section>
+
+<section class="bokked-box-msg" *ngIf="isServiceBooked">
+  <p class="booked-msg">
+    <strong>
+      Thank you for booking with D2D Bike Service.
+    </strong>
+    <br>
+    Your service request has been successfully received. Please expect a call shortly from our mechanic, who will
+    contact you to confirm the details.</p>
+</section>
+<section class="hero-home bg-cover bg-center" id="about">
+  <div class="container index-forward py-5 mb-5">
+    <div class="row text-white">
+
+
+      <div class="col-lg-8">
+        <h1 class="text-uppercase mb-0 text-shadow">D2D Bike Service</h1>
+        <p class="h5 my-4 text-shadow">Quality Two-wheeler Service at Home</p>
+        <p>D2D Bike Service provides all type of bike maintenance and servicing at your Home/Office/Shop. Our
+          experienced mechanics will reach to your location to fix your vehicle.</p>
+        <a class="btn btn-light text-primary px-5" href="https://api.whatsapp.com/send?phone=918587078424">Book
+          Service</a>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Info Section-->
+
+<section class="info p-0 bg-light">
+  <div class="container bg-white">
+    <div class="row py-5 border-top border-md border-primary">
+      <div class="col-lg-4 border-right mb-4 mb-lg-0">
+        <div class="px-4">
+          <p class="text-primary mb-0 font-weight-normal">Trained Mechanics</p>
+          <h3 class="h5">Where people come first</h3>
+          <p class="text-muted mb-0 text-small">Don't settle for anything less than the best when it comes to your bike.
+            Experience the expertise and convenience of D2D Bike Service and enjoy a smoother, more enjoyable ride.</p>
         </div>
-        <span>Please Wait...</span>
       </div>
-
-      <button [disabled]="isBookingClicked" type="submit" class="btn btn-primary">Book Service</button>
-    </form>
-   </section>
-
-   <section class="bokked-box-msg" *ngIf="isServiceBooked" >
-    <p class="booked-msg">
-      <strong>
-        Thank you for booking with D2D Bike Service.
-      </strong>
-      <br>
-      Your service request has been successfully received. Please expect a call shortly from our mechanic, who will contact you to confirm the details.</p>
-  </section>
-  <section class="hero-home bg-cover bg-center" id="about">
-    <div class="container index-forward py-5 mb-5">
-      <div class="row text-white">
-
-
-        <div class="col-lg-8">
-          <h1 class="text-uppercase mb-0 text-shadow">D2D Bike Service</h1>
-          <p class="h5 my-4 text-shadow">Quality Two-wheeler Service at Home</p>
-          <p>D2D Bike Service provides all type of bike maintenance and servicing at your Home/Office/Shop. Our experienced mechanics will reach to your location to fix your vehicle.</p>
-          <a class="btn btn-light text-primary px-5" href="https://api.whatsapp.com/send?phone=918587078424">Book Service</a>
+      <div class="col-lg-4 border-right mb-4 mb-lg-0">
+        <div class="px-4">
+          <p class="text-primary mb-0 font-weight-normal">Genuine Spare Parts</p>
+          <h3 class="h5">Repair & Replacement that long last</h3>
+          <p class="text-muted mb-0 text-small">Don't compromise on quality when it comes to your bike. Experience the
+            difference that genuine spare parts and expert maintenance can make with D2D Bike Service</p>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="px-4">
+          <p class="text-primary mb-0 font-weight-normal">We are here for you</p>
+          <h3 class="h5">RSA 24*7 Emergency</h3>
+          <p class="text-muted mb-0 text-small">Don't let unexpected roadside issues ruin your ride. With our 24/7 RSA,
+            you can enjoy the freedom and flexibility of riding knowing that help is always just a phone call away.</p>
         </div>
       </div>
     </div>
-  </section>
-  <!-- Info Section-->
-
-  <section  class="info p-0 bg-light">
-    <div class="container bg-white">
-      <div class="row py-5 border-top border-md border-primary">
-        <div class="col-lg-4 border-right mb-4 mb-lg-0">
-          <div class="px-4">
-            <p class="text-primary mb-0 font-weight-normal">Trained Mechanics</p>
-            <h3 class="h5">Where people come first</h3>
-            <p class="text-muted mb-0 text-small">Don't settle for anything less than the best when it comes to your bike. Experience the expertise and convenience of D2D Bike Service and enjoy a smoother, more enjoyable ride.</p>
-          </div>
-        </div>
-        <div class="col-lg-4 border-right mb-4 mb-lg-0">
-          <div class="px-4">
-            <p class="text-primary mb-0 font-weight-normal">Genuine Spare Parts</p>
-            <h3 class="h5">Repair & Replacement that long last</h3>
-            <p class="text-muted mb-0 text-small">Don't compromise on quality when it comes to your bike. Experience the difference that genuine spare parts and expert maintenance can make with D2D Bike Service</p>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="px-4">
-            <p class="text-primary mb-0 font-weight-normal">We are here for you</p>
-            <h3 class="h5">RSA 24*7 Emergency</h3>
-            <p class="text-muted mb-0 text-small">Don't let unexpected roadside issues ruin your ride. With our 24/7 RSA, you can enjoy the freedom and flexibility of riding knowing that help is always just a phone call away.</p>
-          </div>
-        </div>
+  </div>
+</section>
+<!-- About Section-->
+<section class="about bg-light pt-0">
+  <div class="container text-center">
+    <h2 class="text-uppercase lined lined-center">Welcome to <span class="text-primary">D2D </span>Bike Service</h2>
+    <p class="text-muted">Doorstep Bike Maintenance and Servicing.</p>
+    <div class="row pt-5">
+      <div class="col-lg-4 mb-5 mb-lg-0">
+        <i class="fa fa-wrench fa-3x text-primary mb-3"></i>
+        <h2 class="h5">Bike Maintenance & Service</h2>
+        <p class="text-muted px-lg-3 mb-0">Experience the convenience, expertise, and quality service of D2D Bike
+          Service today. Schedule your service appointment now and let us take care of your bike so you can focus on the
+          ride ahead.</p>
+      </div>
+      <div class="col-lg-4 mb-5 mb-lg-0">
+        <i class="fa fa-motorcycle fa-3x text-primary mb-3"></i>
+        <h2 class="h5">Bike Sale & Purchase</h2>
+        <p class="text-muted px-lg-3 mb-0">D2D Bike Service is your one-stop destination for all things biking. Schedule
+          your service appointment or browse our selection of bikes for sale today and experience the convenience,
+          expertise, and quality service that sets us apart.</p>
+      </div>
+      <div class="col-lg-4">
+        <i class="fa fa-door-open fa-3x text-primary mb-3"></i>
+        <h2 class="h5">RSA</h2>
+        <p class="text-muted px-lg-3 mb-0">At D2D Bike Service, In addition to our expert bike service, maintenance, and
+          sales, we also offer 24/7 Roadside Assistance (RSA), providing you with peace of mind wherever your ride takes
+          you</p>
       </div>
     </div>
-  </section>
-  <!-- About Section-->
-  <section class="about bg-light pt-0">
-    <div class="container text-center">
-      <h2 class="text-uppercase lined lined-center">Welcome to <span class="text-primary">D2D </span>Bike Service</h2>
-      <p class="text-muted">Doorstep Bike Maintenance and Servicing.</p>
-      <div class="row pt-5">
-        <div class="col-lg-4 mb-5 mb-lg-0">
-          <i class="fa fa-wrench fa-3x text-primary mb-3"></i>
-          <h2 class="h5">Bike Maintenance & Service</h2>
-          <p class="text-muted px-lg-3 mb-0">Experience the convenience, expertise, and quality service of D2D Bike Service today. Schedule your service appointment now and let us take care of your bike so you can focus on the ride ahead.</p>
-        </div>
-        <div class="col-lg-4 mb-5 mb-lg-0">
-          <i class="fa fa-motorcycle fa-3x text-primary mb-3"></i>
-          <h2 class="h5">Bike Sale & Purchase</h2>
-          <p class="text-muted px-lg-3 mb-0">D2D Bike Service is your one-stop destination for all things biking. Schedule your service appointment or browse our selection of bikes for sale today and experience the convenience, expertise, and quality service that sets us apart.</p>
-        </div>
-        <div class="col-lg-4">
-          <i class="fa fa-door-open fa-3x text-primary mb-3"></i>
-          <h2 class="h5">RSA</h2>
-          <p class="text-muted px-lg-3 mb-0">At D2D Bike Service, In addition to our expert bike service, maintenance, and sales, we also offer 24/7 Roadside Assistance (RSA), providing you with peace of mind wherever your ride takes you</p>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!-- Statistics Section-->
-  <!-- <section class="statistics py-5 bg-primary">
+  </div>
+</section>
+<!-- Statistics Section-->
+<!-- <section class="statistics py-5 bg-primary">
     <div class="container text-white">
       <div class="row">
         <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
@@ -159,180 +185,187 @@
       </div>
     </div>
   </section> -->
-  <!-- Prices Section-->
-  <section class="prices">
-    <div class="container">
-      <div class="row mb-5">
-        <div class="col-lg-4">
-          <h2 class="h5">We Value Your Vehicle and Your Time</h2>
-        </div>
-        <div class="col-lg-8">
-          <p>Schedule your service appointment and discover why we're the preferred choice for bike owners who value their vehicles and their time.</p>
+<!-- Prices Section-->
+<section class="prices">
+  <div class="container">
+    <div class="row mb-5">
+      <div class="col-lg-4">
+        <h2 class="h5">We Value Your Vehicle and Your Time</h2>
+      </div>
+      <div class="col-lg-8">
+        <p>Schedule your service appointment and discover why we're the preferred choice for bike owners who value their
+          vehicles and their time.</p>
+      </div>
+    </div>
+    <ul class="nav nav-pills mb-3 flex-column flex-sm-row text-center" id="pills-tab" role="tablist">
+      <li class="nav-item flex-sm-fill"><a class="nav-link active" id="pills-cosmetic-tab" data-toggle="pill"
+          href="#pills-cosmetic" role="tab" aria-controls="pills-cosmetic" aria-selected="true">Bike Maintenance &
+          Service</a></li>
+      <li class="nav-item flex-sm-fill"><a class="nav-link" id="pills-Medications-tab" data-toggle="pill"
+          href="#pills-Medications" role="tab" aria-controls="pills-Medications" aria-selected="false">Bike Sale &
+          Purchase</a></li>
+      <li class="nav-item flex-sm-fill"><a class="nav-link" id="pills-Physician-tab" data-toggle="pill"
+          href="#pills-Physician" role="tab" aria-controls="pills-Physician" aria-selected="false">RSA</a></li>
+    </ul>
+    <div class="tab-content" id="pills-tabContent">
+      <div class="tab-pane py-4 fade show active" id="pills-cosmetic" role="tabpanel"
+        aria-labelledby="pills-cosmetic-tab">
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="d-flex align-items-center mb-2">
+              <h6 class="mb-0">All Two-wheeler Servicing</h6>
+              <!-- <hr class="dotted-separator mx-3 flex-grow-1 my-0"> -->
+              <!-- <h6 class="text-primary mb-0">$150</h6> -->
+            </div>
+            <!-- <p class="text-muted text-small">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor.</p> -->
+            <hr class="dotted-separator my-2 flex-grow-1 my-0">
+          </div>
+
+          <div class="col-lg-6">
+            <div class="d-flex align-items-center mb-2">
+              <h6 class="mb-0">Maintenance</h6>
+              <!-- <hr class="dotted-separator mx-3 flex-grow-1 my-0"> -->
+              <!-- <h6 class="text-primary mb-0">$250</h6> -->
+            </div>
+            <hr class="dotted-separator my-2 flex-grow-1 my-0">
+
+            <!-- <p class="text-muted text-small">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor.</p> -->
+          </div>
+          <div class="col-lg-6">
+            <div class="d-flex align-items-center mb-2">
+              <h6 class="mb-0">Wheel & Tyre Installation</h6>
+              <!-- <hr class="dotted-separator mx-3 flex-grow-1 my-0">
+                <h6 class="text-primary mb-0">$175</h6> -->
+            </div>
+            <hr class="dotted-separator my-2 flex-grow-1 my-0">
+          </div>
+          <div class="col-lg-6">
+            <div class="d-flex align-items-center mb-2">
+              <h6 class="mb-0">Pick & Drop Service</h6>
+              <!-- <hr class="dotted-separator mx-3 flex-grow-1 my-0"> -->
+              <!-- <h6 class="text-primary mb-0">$225</h6> -->
+            </div>
+            <hr class="dotted-separator my-2 flex-grow-1 my-0">
+          </div>
+          <div class="col-lg-6">
+            <div class="d-flex align-items-center mb-2">
+              <h6 class="mb-0">Parts Replacement</h6>
+              <!-- <hr class="dotted-separator mx-3 flex-grow-1 my-0"> -->
+              <!-- <h6 class="text-primary mb-0">$175</h6> -->
+            </div>
+            <hr class="dotted-separator my-2 flex-grow-1 my-0">
+          </div>
+          <div class="col-lg-6">
+            <div class="d-flex align-items-center mb-2">
+              <h6 class="mb-0">Denting & Painting</h6>
+              <!-- <hr class="dotted-separator mx-3 flex-grow-1 my-0">
+                <h6 class="text-primary mb-0">$225</h6> -->
+            </div>
+            <hr class="dotted-separator my-2 flex-grow-1 my-0">
+          </div>
         </div>
       </div>
-      <ul class="nav nav-pills mb-3 flex-column flex-sm-row text-center" id="pills-tab" role="tablist">
-        <li class="nav-item flex-sm-fill"><a class="nav-link active" id="pills-cosmetic-tab" data-toggle="pill" href="#pills-cosmetic" role="tab" aria-controls="pills-cosmetic" aria-selected="true">Bike Maintenance & Service</a></li>
-        <li class="nav-item flex-sm-fill"><a class="nav-link" id="pills-Medications-tab" data-toggle="pill" href="#pills-Medications" role="tab" aria-controls="pills-Medications" aria-selected="false">Bike Sale & Purchase</a></li>
-        <li class="nav-item flex-sm-fill"><a class="nav-link" id="pills-Physician-tab" data-toggle="pill" href="#pills-Physician" role="tab" aria-controls="pills-Physician" aria-selected="false">RSA</a></li>
-      </ul>
-      <div class="tab-content" id="pills-tabContent">
-        <div class="tab-pane py-4 fade show active" id="pills-cosmetic" role="tabpanel" aria-labelledby="pills-cosmetic-tab">
-          <div class="row">
-            <div class="col-lg-6">
-              <div class="d-flex align-items-center mb-2">
-                <h6 class="mb-0">All Two-wheeler Servicing</h6>
-                <!-- <hr class="dotted-separator mx-3 flex-grow-1 my-0"> -->
-                <!-- <h6 class="text-primary mb-0">$150</h6> -->
-              </div>
-              <!-- <p class="text-muted text-small">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor.</p> -->
-              <hr class="dotted-separator my-2 flex-grow-1 my-0">
+      <div class="tab-pane py-4 fade" id="pills-Medications" role="tabpanel" aria-labelledby="pills-Medications-tab">
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="d-flex align-items-center mb-2">
+              <h6 class="mb-0">Sale</h6>
+              <!-- <hr class="dotted-separator mx-3 flex-grow-1 my-0">
+                <h6 class="text-primary mb-0">$150</h6> -->
             </div>
-
-            <div class="col-lg-6">
-              <div class="d-flex align-items-center mb-2">
-                <h6 class="mb-0">Maintenance</h6>
-                <!-- <hr class="dotted-separator mx-3 flex-grow-1 my-0"> -->
-                <!-- <h6 class="text-primary mb-0">$250</h6> -->
-              </div>
-              <hr class="dotted-separator my-2 flex-grow-1 my-0">
-
-              <!-- <p class="text-muted text-small">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor.</p> -->
+            <hr class="dotted-separator my-2 flex-grow-1 my-0">
+          </div>
+          <div class="col-lg-6">
+            <div class="d-flex align-items-center mb-2">
+              <h6 class="mb-0">Purchase</h6>
+              <!-- <hr class="dotted-separator mx-3 flex-grow-1 my-0">
+                <h6 class="text-primary mb-0">$250</h6> -->
             </div>
-            <div class="col-lg-6">
-              <div class="d-flex align-items-center mb-2">
-                <h6 class="mb-0">Wheel & Tyre Installation</h6>
-                <!-- <hr class="dotted-separator mx-3 flex-grow-1 my-0">
+            <hr class="dotted-separator my-2 flex-grow-1 my-0">
+          </div>
+          <div class="col-lg-6">
+            <div class="d-flex align-items-center mb-2">
+              <h6 class="mb-0">Inspection</h6>
+              <!-- <hr class="dotted-separator mx-3 flex-grow-1 my-0">
                 <h6 class="text-primary mb-0">$175</h6> -->
-              </div>
-              <hr class="dotted-separator my-2 flex-grow-1 my-0">
             </div>
-            <div class="col-lg-6">
-              <div class="d-flex align-items-center mb-2">
-                <h6 class="mb-0">Pick & Drop Service</h6>
-                <!-- <hr class="dotted-separator mx-3 flex-grow-1 my-0"> -->
-                <!-- <h6 class="text-primary mb-0">$225</h6> -->
-              </div>
-              <hr class="dotted-separator my-2 flex-grow-1 my-0">
-            </div>
-            <div class="col-lg-6">
-              <div class="d-flex align-items-center mb-2">
-                <h6 class="mb-0">Parts Replacement</h6>
-                <!-- <hr class="dotted-separator mx-3 flex-grow-1 my-0"> -->
-                <!-- <h6 class="text-primary mb-0">$175</h6> -->
-              </div>
-              <hr class="dotted-separator my-2 flex-grow-1 my-0">
-            </div>
-            <div class="col-lg-6">
-              <div class="d-flex align-items-center mb-2">
-                <h6 class="mb-0">Denting & Painting</h6>
-                <!-- <hr class="dotted-separator mx-3 flex-grow-1 my-0">
+            <hr class="dotted-separator my-2 flex-grow-1 my-0">
+          </div>
+          <div class="col-lg-6">
+            <div class="d-flex align-items-center mb-2">
+              <h6 class="mb-0">Cost Estimation</h6>
+              <!-- <hr class="dotted-separator mx-3 flex-grow-1 my-0">
                 <h6 class="text-primary mb-0">$225</h6> -->
-              </div>
-              <hr class="dotted-separator my-2 flex-grow-1 my-0">
             </div>
+            <hr class="dotted-separator my-2 flex-grow-1 my-0">
+          </div>
+          <div class="col-lg-6">
+            <div class="d-flex align-items-center mb-2">
+              <!-- <h6 class="mb-0">Rotavirus Test</h6> -->
+              <!-- <hr class="dotted-separator mx-3 flex-grow-1 my-0">
+                <h6 class="text-primary mb-0">$175</h6> -->
+            </div>
+            <!-- <hr class="dotted-separator my-2 flex-grow-1 my-0"> -->
           </div>
         </div>
-        <div class="tab-pane py-4 fade" id="pills-Medications" role="tabpanel" aria-labelledby="pills-Medications-tab">
-          <div class="row">
-            <div class="col-lg-6">
-              <div class="d-flex align-items-center mb-2">
-                <h6 class="mb-0">Sale</h6>
-                <!-- <hr class="dotted-separator mx-3 flex-grow-1 my-0">
+      </div>
+      <div class="tab-pane py-4 fade" id="pills-Physician" role="tabpanel" aria-labelledby="pills-Physician-tab">
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="d-flex align-items-center mb-2">
+              <h6 class="mb-0">Emergency Support</h6>
+              <!-- <hr class="dotted-separator mx-3 flex-grow-1 my-0">
                 <h6 class="text-primary mb-0">$150</h6> -->
-              </div>
-              <hr class="dotted-separator my-2 flex-grow-1 my-0">
             </div>
-            <div class="col-lg-6">
-              <div class="d-flex align-items-center mb-2">
-                <h6 class="mb-0">Purchase</h6>
-                <!-- <hr class="dotted-separator mx-3 flex-grow-1 my-0">
-                <h6 class="text-primary mb-0">$250</h6> -->
-              </div>
-              <hr class="dotted-separator my-2 flex-grow-1 my-0">
-            </div>
-            <div class="col-lg-6">
-              <div class="d-flex align-items-center mb-2">
-                <h6 class="mb-0">Inspection</h6>
-                <!-- <hr class="dotted-separator mx-3 flex-grow-1 my-0">
-                <h6 class="text-primary mb-0">$175</h6> -->
-              </div>
-              <hr class="dotted-separator my-2 flex-grow-1 my-0">
-            </div>
-            <div class="col-lg-6">
-              <div class="d-flex align-items-center mb-2">
-                <h6 class="mb-0">Cost Estimation</h6>
-                <!-- <hr class="dotted-separator mx-3 flex-grow-1 my-0">
-                <h6 class="text-primary mb-0">$225</h6> -->
-              </div>
-              <hr class="dotted-separator my-2 flex-grow-1 my-0">
-            </div>
-            <div class="col-lg-6">
-              <div class="d-flex align-items-center mb-2">
-                <!-- <h6 class="mb-0">Rotavirus Test</h6> -->
-                <!-- <hr class="dotted-separator mx-3 flex-grow-1 my-0">
-                <h6 class="text-primary mb-0">$175</h6> -->
-              </div>
-              <!-- <hr class="dotted-separator my-2 flex-grow-1 my-0"> -->
-            </div>
+            <hr class="dotted-separator my-2 flex-grow-1 my-0">
           </div>
-        </div>
-        <div class="tab-pane py-4 fade" id="pills-Physician" role="tabpanel" aria-labelledby="pills-Physician-tab">
-          <div class="row">
-            <div class="col-lg-6">
-              <div class="d-flex align-items-center mb-2">
-                <h6 class="mb-0">Emergency Support</h6>
-                <!-- <hr class="dotted-separator mx-3 flex-grow-1 my-0">
-                <h6 class="text-primary mb-0">$150</h6> -->
-              </div>
-              <hr class="dotted-separator my-2 flex-grow-1 my-0">
-            </div>
-            <div class="col-lg-6">
-              <div class="d-flex align-items-center mb-2">
-                <h6 class="mb-0">On-the-Spot Repairs</h6>
-                <!-- <hr class="dotted-separator mx-3 flex-grow-1 my-0">
+          <div class="col-lg-6">
+            <div class="d-flex align-items-center mb-2">
+              <h6 class="mb-0">On-the-Spot Repairs</h6>
+              <!-- <hr class="dotted-separator mx-3 flex-grow-1 my-0">
                 <h6 class="text-primary mb-0">$250</h6> -->
-              </div>
-              <hr class="dotted-separator my-2 flex-grow-1 my-0">
             </div>
-            <div class="col-lg-6">
-              <div class="d-flex align-items-center mb-2">
-                <h6 class="mb-0">Immediate Response</h6>
-                <!-- <hr class="dotted-separator mx-3 flex-grow-1 my-0">
+            <hr class="dotted-separator my-2 flex-grow-1 my-0">
+          </div>
+          <div class="col-lg-6">
+            <div class="d-flex align-items-center mb-2">
+              <h6 class="mb-0">Immediate Response</h6>
+              <!-- <hr class="dotted-separator mx-3 flex-grow-1 my-0">
                 <h6 class="text-primary mb-0">$175</h6> -->
-              </div>
-              <hr class="dotted-separator my-2 flex-grow-1 my-0">
             </div>
-            <div class="col-lg-6">
-              <div class="d-flex align-items-center mb-2">
-                <h6 class="mb-0">Peace of Mind</h6>
-                <!-- <hr class="dotted-separator mx-3 flex-grow-1 my-0">
+            <hr class="dotted-separator my-2 flex-grow-1 my-0">
+          </div>
+          <div class="col-lg-6">
+            <div class="d-flex align-items-center mb-2">
+              <h6 class="mb-0">Peace of Mind</h6>
+              <!-- <hr class="dotted-separator mx-3 flex-grow-1 my-0">
                 <h6 class="text-primary mb-0">$225</h6> -->
-              </div>
-              <hr class="dotted-separator my-2 flex-grow-1 my-0">
             </div>
-            <div class="col-lg-6">
-              <div class="d-flex align-items-center mb-2">
-                <h6 class="mb-0">Safety First</h6>
-                <!-- <hr class="dotted-separator mx-3 flex-grow-1 my-0">
+            <hr class="dotted-separator my-2 flex-grow-1 my-0">
+          </div>
+          <div class="col-lg-6">
+            <div class="d-flex align-items-center mb-2">
+              <h6 class="mb-0">Safety First</h6>
+              <!-- <hr class="dotted-separator mx-3 flex-grow-1 my-0">
                 <h6 class="text-primary mb-0">$175</h6> -->
-              </div>
-              <hr class="dotted-separator my-2 flex-grow-1 my-0">
             </div>
-            <div class="col-lg-6">
-              <div class="d-flex align-items-center mb-2">
-                <!-- <h6 class="mb-0">SurgerEye Examination</h6> -->
-                <!-- <hr class="dotted-separator mx-3 flex-grow-1 my-0">
+            <hr class="dotted-separator my-2 flex-grow-1 my-0">
+          </div>
+          <div class="col-lg-6">
+            <div class="d-flex align-items-center mb-2">
+              <!-- <h6 class="mb-0">SurgerEye Examination</h6> -->
+              <!-- <hr class="dotted-separator mx-3 flex-grow-1 my-0">
                 <h6 class="text-primary mb-0">$225</h6> -->
-              </div>
-              <!-- <hr class="dotted-separator my-2 flex-grow-1 my-0"> -->
             </div>
+            <!-- <hr class="dotted-separator my-2 flex-grow-1 my-0"> -->
           </div>
         </div>
       </div>
     </div>
-  </section>
-  <!-- Departments Section-->
-  <!-- <section class="departments pb-0 bg-light">
+  </div>
+</section>
+<!-- Departments Section-->
+<!-- <section class="departments pb-0 bg-light">
     <div class="container">
       <div class="row align-items-end">
         <div class="col-lg-5 d-none d-lg-block"><img class="img-fluid" src="../../assets/images/d2d-logo.jpeg" alt="doctor"></div>
@@ -382,122 +415,127 @@
       </div>
     </div>
   </section> -->
-  <!-- Service Section-->
-  <section class="services">
-    <div class="container text-center">
-      <h2 class="text-uppercase  lined-center mb-4">Our  <span class="text-primary">Services</span></h2>
-      <!-- <p class="text-muted mb-5">Lorem ipsum dolor sit amet, consectetuer. Proin gravida nibh vel velit auctor aliquetenean.</p> -->
-      <div class="row">
-            <!-- Services Item-->
-            <div class="col-xl-3 col-md-6 mb-4 mb-xl-0">
-              <div class="card services-item border-0">
-                <div class="card-body border-top border-md border-primary py-5 px-4 shadow-sm">
-                  <h2 class="h6 mb-0 services-item-heading">Doorstep Service</h2>
-                  <div class="services-icon my-4">
-                    <i class="fas fa-home fa-2x"></i>
-                  </div>
-                  <!-- <p class="services-item-text text-small mb-0">Consider may dwelling old him her surprise finished families graceful. Gave led past poor met fine was new.</p> -->
-                </div>
-              </div>
+<!-- Service Section-->
+<section class="services">
+  <div class="container text-center">
+    <h2 class="text-uppercase  lined-center mb-4">Our <span class="text-primary">Services</span></h2>
+    <!-- <p class="text-muted mb-5">Lorem ipsum dolor sit amet, consectetuer. Proin gravida nibh vel velit auctor aliquetenean.</p> -->
+    <div class="row">
+      <!-- Services Item-->
+      <div class="col-xl-3 col-md-6 mb-4 mb-xl-0">
+        <div class="card services-item border-0">
+          <div class="card-body border-top border-md border-primary py-5 px-4 shadow-sm">
+            <h2 class="h6 mb-0 services-item-heading">Doorstep Service</h2>
+            <div class="services-icon my-4">
+              <i class="fas fa-home fa-2x"></i>
             </div>
-            <!-- Services Item-->
-            <div class="col-xl-3 col-md-6 mb-4 mb-xl-0">
-              <div class="card services-item border-0">
-                <div class="card-body border-top border-md border-primary py-5 px-4 shadow-sm">
-                  <h2 class="h6 mb-0 services-item-heading">Pick & Drop Service </h2>
-                  <div class="services-icon my-4"><i class="fa fa-door-open fa-2x"></i></div>
-                  <!-- <p class="services-item-text text-small mb-0">Consider may dwelling old him her surprise finished families graceful. Gave led past poor met fine was new.</p> -->
-                </div>
-              </div>
-            </div>
-            <!-- Services Item-->
-            <div class="col-xl-3 col-md-6 mb-4 mb-xl-0">
-              <div class="card services-item border-0">
-                <div class="card-body border-top border-md border-primary py-5 px-4 shadow-sm">
-                  <h2 class="h6 mb-0 services-item-heading">Bike Sell and Purchase</h2>
-                  <div class="services-icon my-4"><i class="fa fa-motorcycle fa-2x"></i></div>
-                  <!-- <p class="services-item-text text-small mb-0">Consider may dwelling old him her surprise finished families graceful. Gave led past poor met fine was new.</p> -->
-                </div>
-              </div>
-            </div>
-            <!-- Services Item-->
-            <div class="col-xl-3 col-md-6 mb-4 mb-xl-0">
-              <div class="card services-item border-0">
-                <div class="card-body border-top border-md border-primary py-5 px-4 shadow-sm">
-                  <h2 class="h6 mb-0 services-item-heading">24/7 Road Side Assistance</h2>
-                  <div class="services-icon my-4"><i class="fas fa-road fa-2x"></i></div>
-                  <!-- <p class="services-item-text text-small mb-0">Consider may dwelling old him her surprise finished families graceful. Gave led past poor met fine was new.</p> -->
-                </div>
-              </div>
-            </div>
+            <!-- <p class="services-item-text text-small mb-0">Consider may dwelling old him her surprise finished families graceful. Gave led past poor met fine was new.</p> -->
+          </div>
+        </div>
+      </div>
+      <!-- Services Item-->
+      <div class="col-xl-3 col-md-6 mb-4 mb-xl-0">
+        <div class="card services-item border-0">
+          <div class="card-body border-top border-md border-primary py-5 px-4 shadow-sm">
+            <h2 class="h6 mb-0 services-item-heading">Pick & Drop Service </h2>
+            <div class="services-icon my-4"><i class="fa fa-door-open fa-2x"></i></div>
+            <!-- <p class="services-item-text text-small mb-0">Consider may dwelling old him her surprise finished families graceful. Gave led past poor met fine was new.</p> -->
+          </div>
+        </div>
+      </div>
+      <!-- Services Item-->
+      <div class="col-xl-3 col-md-6 mb-4 mb-xl-0">
+        <div class="card services-item border-0">
+          <div class="card-body border-top border-md border-primary py-5 px-4 shadow-sm">
+            <h2 class="h6 mb-0 services-item-heading">Bike Sell and Purchase</h2>
+            <div class="services-icon my-4"><i class="fa fa-motorcycle fa-2x"></i></div>
+            <!-- <p class="services-item-text text-small mb-0">Consider may dwelling old him her surprise finished families graceful. Gave led past poor met fine was new.</p> -->
+          </div>
+        </div>
+      </div>
+      <!-- Services Item-->
+      <div class="col-xl-3 col-md-6 mb-4 mb-xl-0">
+        <div class="card services-item border-0">
+          <div class="card-body border-top border-md border-primary py-5 px-4 shadow-sm">
+            <h2 class="h6 mb-0 services-item-heading">24/7 Road Side Assistance</h2>
+            <div class="services-icon my-4"><i class="fas fa-road fa-2x"></i></div>
+            <!-- <p class="services-item-text text-small mb-0">Consider may dwelling old him her surprise finished families graceful. Gave led past poor met fine was new.</p> -->
+          </div>
+        </div>
       </div>
     </div>
-  </section>
-  <!-- Doctors Section-->
-  <section class="doctors bg-light">
-    <div class="container text-center">
-      <h2 class="text-uppercase lined lined-center">We deal in  <span class="text-primary">Brands</span></h2>
-      <p class="text-muted mb-5">D2D Bike Service is a multi-brand doorstep service center.</p>
-      <marquee onmouseover="stop()" onmouseout="start()" behavior="slide" scrollamount="17" behavior=""  >
+  </div>
+</section>
+<!-- Doctors Section-->
+<section class="doctors bg-light">
+  <div class="container text-center">
+    <h2 class="text-uppercase lined lined-center">We deal in <span class="text-primary">Brands</span></h2>
+    <p class="text-muted mb-5">D2D Bike Service is a multi-brand doorstep service center.</p>
+    <marquee onmouseover="stop()" onmouseout="start()" behavior="slide" scrollamount="17" behavior="">
       <div class="brand-container">
-            <!-- Doctor-->
-            <div >
-              <div class="card doctor">
-                <div class="card-body p-0 shadow-sm logo-card-wrapper">
-                  <div class="position-relative"><img class="img-fluid border-top border-md border-primary brand-logo" src="../../assets/images/tvs.jpg" alt="">
-                  </div>
-                  <div class="p-4">
-                    <h6 class="mb-0">TVS</h6>
-                  </div>
-                  <!-- <a class="btn btn-block btn-primary" href="#">Make appointmet</a> -->
-                </div>
+        <!-- Doctor-->
+        <div>
+          <div class="card doctor">
+            <div class="card-body p-0 shadow-sm logo-card-wrapper">
+              <div class="position-relative"><img class="img-fluid border-top border-md border-primary brand-logo"
+                  src="../../assets/images/tvs.jpg" alt="">
+              </div>
+              <div class="p-4">
+                <h6 class="mb-0">TVS</h6>
+              </div>
+              <!-- <a class="btn btn-block btn-primary" href="#">Make appointmet</a> -->
+            </div>
+          </div>
+        </div>
+        <!-- Doctor-->
+        <div>
+          <div class="card doctor">
+            <div class="card-body p-0 shadow-sm logo-card-wrapper">
+              <div class="position-relative"><img class="img-fluid border-top border-md border-primary brand-logo"
+                  src="../../assets/images/hero.png" alt="">
+              </div>
+              <div class="p-4">
+                <h6 class="mb-0">Hero</h6>
+              </div>
+              <!-- <a class="btn btn-block btn-primary" href="#">Make appointmet</a> -->
+            </div>
+          </div>
+        </div>
+        <!-- Doctor-->
+        <!-- Doctor-->
+        <div>
+          <div class="card doctor">
+            <div class="card-body p-0 shadow-sm logo-card-wrapper">
+              <div class="position-relative"><img class="img-fluid border-top border-md border-primary brand-logo"
+                  src="../../assets/images/yamaha1.png" alt="">
+              </div>
+              <div class="p-4">
+                <h6 class="mb-0">Yamaha</h6>
+              </div>
+              <!-- <a class="btn btn-block btn-primary" href="#">Make appointmet</a> -->
+            </div>
+          </div>
+        </div>
+        <!-- Doctor-->
+        <div>
+          <div class="card doctor border-0">
+            <div class="card-body p-0 shadow-sm logo-card-wrapper">
+              <div class="position-relative"><img class="img-fluid border-top border-md border-primary brand-logo"
+                  src="../../assets/images/honda.svg" alt="">
+              </div>
+              <div class="p-4">
+                <h6 class="mb-0">Honda</h6>
               </div>
             </div>
-            <!-- Doctor-->
-            <div >
-              <div class="card doctor">
-                <div class="card-body p-0 shadow-sm logo-card-wrapper">
-                  <div class="position-relative"><img class="img-fluid border-top border-md border-primary brand-logo" src="../../assets/images/hero.png" alt="">
-                  </div>
-                  <div class="p-4">
-                    <h6 class="mb-0">Hero</h6>
-                  </div>
-                  <!-- <a class="btn btn-block btn-primary" href="#">Make appointmet</a> -->
-                </div>
-              </div>
-            </div>
-            <!-- Doctor-->
-            <!-- Doctor-->
-            <div >
-              <div class="card doctor">
-                <div class="card-body p-0 shadow-sm logo-card-wrapper">
-                  <div class="position-relative"><img class="img-fluid border-top border-md border-primary brand-logo" src="../../assets/images/yamaha1.png" alt="">
-                  </div>
-                  <div class="p-4">
-                    <h6 class="mb-0">Yamaha</h6>
-                  </div>
-                  <!-- <a class="btn btn-block btn-primary" href="#">Make appointmet</a> -->
-                </div>
-              </div>
-            </div>
-            <!-- Doctor-->
-            <div >
-              <div class="card doctor border-0">
-                <div class="card-body p-0 shadow-sm logo-card-wrapper">
-                  <div class="position-relative"><img class="img-fluid border-top border-md border-primary brand-logo" src="../../assets/images/honda.svg" alt="">
-                  </div>
-                  <div class="p-4">
-                    <h6 class="mb-0">Honda</h6>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- Doctor-->
-            <div >
-              <div class="card doctor border-0">
-                <div class="card-body p-0 shadow-sm logo-card-wrapper">
-                  <div class="position-relative"><img class="img-fluid border-top border-md border-primary brand-logo" src="../../assets/images/Bajaj_auto_logo.svg" alt="">
-                    <!-- <div class="doctor-overlay">
+          </div>
+        </div>
+        <!-- Doctor-->
+        <div>
+          <div class="card doctor border-0">
+            <div class="card-body p-0 shadow-sm logo-card-wrapper">
+              <div class="position-relative"><img class="img-fluid border-top border-md border-primary brand-logo"
+                  src="../../assets/images/Bajaj_auto_logo.svg" alt="">
+                <!-- <div class="doctor-overlay">
                       <ul class="list-inline mb-0 doctor-social">
                         <li class="list-inline-item"><a class="doctor-social-link" href="#"><i class="fab fa-facebook-f"></i></a></li>
                         <li class="list-inline-item"><a class="doctor-social-link" href="#"><i class="fab fa-twitter"></i></a></li>
@@ -505,21 +543,22 @@
                         <li class="list-inline-item"><a class="doctor-social-link" href="#"><i class="fab fa-youtube"></i></a></li>
                       </ul>
                     </div> -->
-                  </div>
-                  <div class="p-4">
-                    <h6 class="mb-0">Bajaj</h6>
-                  </div>
-                  <!-- <a class="btn btn-block btn-primary" href="#">Make appointmet</a> -->
-                </div>
               </div>
+              <div class="p-4">
+                <h6 class="mb-0">Bajaj</h6>
+              </div>
+              <!-- <a class="btn btn-block btn-primary" href="#">Make appointmet</a> -->
             </div>
-            <!-- Doctor-->
-            <!-- Doctor-->
-            <div >
-              <div class="card doctor border-0">
-                <div class="card-body p-0 shadow-sm logo-card-wrapper">
-                  <div class="position-relative"><img class="img-fluid border-top border-md border-primary brand-logo" src="../../assets/images/suzuki3.webp" alt="">
-                    <!-- <div class="doctor-overlay">
+          </div>
+        </div>
+        <!-- Doctor-->
+        <!-- Doctor-->
+        <div>
+          <div class="card doctor border-0">
+            <div class="card-body p-0 shadow-sm logo-card-wrapper">
+              <div class="position-relative"><img class="img-fluid border-top border-md border-primary brand-logo"
+                  src="../../assets/images/suzuki3.webp" alt="">
+                <!-- <div class="doctor-overlay">
                       <ul class="list-inline mb-0 doctor-social">
                         <li class="list-inline-item"><a class="doctor-social-link" href="#"><i class="fab fa-facebook-f"></i></a></li>
                         <li class="list-inline-item"><a class="doctor-social-link" href="#"><i class="fab fa-twitter"></i></a></li>
@@ -527,21 +566,22 @@
                         <li class="list-inline-item"><a class="doctor-social-link" href="#"><i class="fab fa-youtube"></i></a></li>
                       </ul>
                     </div> -->
-                  </div>
-                  <div class="p-4">
-                    <h6 class="mb-0">Suzuki</h6>
-                  </div>
-                  <!-- <a class="btn btn-block btn-primary" href="#">Make appointmet</a> -->
-                </div>
               </div>
+              <div class="p-4">
+                <h6 class="mb-0">Suzuki</h6>
+              </div>
+              <!-- <a class="btn btn-block btn-primary" href="#">Make appointmet</a> -->
             </div>
-            <!-- Doctor-->
-            <!-- Doctor-->
-            <div >
-              <div class="card doctor border-0">
-                <div class="card-body p-0 shadow-sm logo-card-wrapper">
-                  <div class="position-relative"><img class="img-fluid border-top border-md border-primary brand-logo" src="../../assets/images/vespa.png" alt="">
-                    <!-- <div class="doctor-overlay">
+          </div>
+        </div>
+        <!-- Doctor-->
+        <!-- Doctor-->
+        <div>
+          <div class="card doctor border-0">
+            <div class="card-body p-0 shadow-sm logo-card-wrapper">
+              <div class="position-relative"><img class="img-fluid border-top border-md border-primary brand-logo"
+                  src="../../assets/images/vespa.png" alt="">
+                <!-- <div class="doctor-overlay">
                       <ul class="list-inline mb-0 doctor-social">
                         <li class="list-inline-item"><a class="doctor-social-link" href="#"><i class="fab fa-facebook-f"></i></a></li>
                         <li class="list-inline-item"><a class="doctor-social-link" href="#"><i class="fab fa-twitter"></i></a></li>
@@ -549,20 +589,21 @@
                         <li class="list-inline-item"><a class="doctor-social-link" href="#"><i class="fab fa-youtube"></i></a></li>
                       </ul>
                     </div> -->
-                  </div>
-                  <div class="p-4">
-                    <h6 class="mb-0">Vespa</h6>
-                  </div>
-                  <!-- <a class="btn btn-block btn-primary" href="#">Make appointmet</a> -->
-                </div>
               </div>
+              <div class="p-4">
+                <h6 class="mb-0">Vespa</h6>
+              </div>
+              <!-- <a class="btn btn-block btn-primary" href="#">Make appointmet</a> -->
             </div>
-            <!-- Doctor-->
-            <div >
-              <div class="card doctor border-0">
-                <div class="card-body p-0 shadow-sm logo-card-wrapper">
-                  <div class="position-relative"><img class="img-fluid border-top border-md border-primary brand-logo" src="../../assets/images/royal.jpg" alt="">
-                    <!-- <div class="doctor-overlay">
+          </div>
+        </div>
+        <!-- Doctor-->
+        <div>
+          <div class="card doctor border-0">
+            <div class="card-body p-0 shadow-sm logo-card-wrapper">
+              <div class="position-relative"><img class="img-fluid border-top border-md border-primary brand-logo"
+                  src="../../assets/images/royal.jpg" alt="">
+                <!-- <div class="doctor-overlay">
                       <ul class="list-inline mb-0 doctor-social">
                         <li class="list-inline-item"><a class="doctor-social-link" href="#"><i class="fab fa-facebook-f"></i></a></li>
                         <li class="list-inline-item"><a class="doctor-social-link" href="#"><i class="fab fa-twitter"></i></a></li>
@@ -570,88 +611,96 @@
                         <li class="list-inline-item"><a class="doctor-social-link" href="#"><i class="fab fa-youtube"></i></a></li>
                       </ul>
                     </div> -->
-                  </div>
-                  <div class="p-4">
-                    <h6 class="mb-0">Royal Enfield</h6>
-                  </div>
-                  <!-- <a class="btn btn-block btn-primary" href="#">Make appointmet</a> -->
-                </div>
               </div>
+              <div class="p-4">
+                <h6 class="mb-0">Royal Enfield</h6>
+              </div>
+              <!-- <a class="btn btn-block btn-primary" href="#">Make appointmet</a> -->
             </div>
+          </div>
+        </div>
       </div>
     </marquee>
-    </div>
-  </section>
-  <!-- Opening Hours-->
-  <section class="opening-hours overflow-hidden">
-    <div class="container">
-      <h2 class="text-uppercase">Working  <span class="text-primary">Hours</span></h2>
-      <!-- <p class="text-muted mb-5">Lorem ipsum dolor sit amet, consectetuer. Proin gravida nibh vel velit auctor aliquetenean.</p> -->
-      <div class="row align-items-center">
-        <div class="col-lg-6 mb-5 mb-lg-0">
-          <div class="card shadow-sm border-0">
-            <div class="card-body border-top border-md border-primary p-2">
-              <ul class="list-unstyled mb-0">
-                <li class="d-flex align-items-center justify-content-between pb-3 px-4"><strong class="h6 mb-0">Monday </strong><span class="mb-0">9:00 am - 07:00 pm</span></li>
-                <li class="d-flex align-items-center justify-content-between py-3 bg-light px-4"><strong class="h6 mb-0">Tuesday </strong><span class="mb-0">9:00 am - 07:00 pm</span></li>
-                <li class="d-flex align-items-center justify-content-between py-3 px-4"><strong class="h6 mb-0">Wednesday </strong><span class="mb-0">9:00 am - 07:00 pm</span></li>
-                <li class="d-flex align-items-center justify-content-between py-3 px-4"><strong class="h6 mb-0">Thursday </strong><strong class="h6 mb-0 text-uppercase text-primary">Closed</strong></li>
-                <li class="d-flex align-items-center justify-content-between py-3 bg-light px-4"><strong class="h6 mb-0">Friday</strong><span class="mb-0">9:00 am - 07:00 pm</span></li>
-                <li class="d-flex align-items-center justify-content-between py-3 px-4"><strong class="h6 mb-0">Saturday</strong><span class="mb-0">9:00 am - 07:00 pm</span></li>
-                <li class="d-flex align-items-center justify-content-between py-3 bg-light px-4"><strong class="h6 mb-0">Sunday</strong><span class="mb-0">9:00 am - 07:00 pm</span></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-6 text-center">
-          <i class="fa fa-clock fa-4x text-primary mb-4">   </i>
-          <h3 class="h4">RSA</h3>
-          <p class="text-muted mb-3 px-lg-5">If you need a mechanic urgently, call for RSA 24*7 Service.</p>
-          <div class="text-primary ">
-            <a class="btn btn-outline-primary h5 px-4 py-3" href="tel:8587078424"> <i class="fas fa-phone-square mr-2 rotate-180"></i>+91 8587078424</a>
+  </div>
+</section>
+<!-- Opening Hours-->
+<section class="opening-hours overflow-hidden">
+  <div class="container">
+    <h2 class="text-uppercase">Working <span class="text-primary">Hours</span></h2>
+    <!-- <p class="text-muted mb-5">Lorem ipsum dolor sit amet, consectetuer. Proin gravida nibh vel velit auctor aliquetenean.</p> -->
+    <div class="row align-items-center">
+      <div class="col-lg-6 mb-5 mb-lg-0">
+        <div class="card shadow-sm border-0">
+          <div class="card-body border-top border-md border-primary p-2">
+            <ul class="list-unstyled mb-0">
+              <li class="d-flex align-items-center justify-content-between pb-3 px-4"><strong class="h6 mb-0">Monday
+                </strong><span class="mb-0">9:00 am - 07:00 pm</span></li>
+              <li class="d-flex align-items-center justify-content-between py-3 bg-light px-4"><strong
+                  class="h6 mb-0">Tuesday </strong><span class="mb-0">9:00 am - 07:00 pm</span></li>
+              <li class="d-flex align-items-center justify-content-between py-3 px-4"><strong class="h6 mb-0">Wednesday
+                </strong><span class="mb-0">9:00 am - 07:00 pm</span></li>
+              <li class="d-flex align-items-center justify-content-between py-3 px-4"><strong class="h6 mb-0">Thursday
+                </strong><strong class="h6 mb-0 text-uppercase text-primary">Closed</strong></li>
+              <li class="d-flex align-items-center justify-content-between py-3 bg-light px-4"><strong
+                  class="h6 mb-0">Friday</strong><span class="mb-0">9:00 am - 07:00 pm</span></li>
+              <li class="d-flex align-items-center justify-content-between py-3 px-4"><strong
+                  class="h6 mb-0">Saturday</strong><span class="mb-0">9:00 am - 07:00 pm</span></li>
+              <li class="d-flex align-items-center justify-content-between py-3 bg-light px-4"><strong
+                  class="h6 mb-0">Sunday</strong><span class="mb-0">9:00 am - 07:00 pm</span></li>
+            </ul>
           </div>
         </div>
       </div>
+      <div class="col-lg-6 text-center">
+        <i class="fa fa-clock fa-4x text-primary mb-4"> </i>
+        <h3 class="h4">RSA</h3>
+        <p class="text-muted mb-3 px-lg-5">If you need a mechanic urgently, call for RSA 24*7 Service.</p>
+        <div class="text-primary ">
+          <a class="btn btn-outline-primary h5 px-4 py-3" href="tel:8587078424"> <i
+              class="fas fa-phone-square mr-2 rotate-180"></i>+91 8587078424</a>
+        </div>
+      </div>
     </div>
-  </section>
-  <!-- Contact Section-->
-  <section id="contactUs" class="contact py-5 bg-primary text-white">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-4 mb-5 mb-lg-0">
-          <div class="d-flex align-items-center">
-            <div class="contact-icon rotate-180">
-              <i class="fa fa-phone"></i>
-            </div>
-            <div class="ml-3">
-              <a class="h5 mb-0" href="tel:8587078424">+91 8587078424</a>
+  </div>
+</section>
+<!-- Contact Section-->
+<section id="contactUs" class="contact py-5 bg-primary text-white">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 mb-5 mb-lg-0">
+        <div class="d-flex align-items-center">
+          <div class="contact-icon rotate-180">
+            <i class="fa fa-phone"></i>
+          </div>
+          <div class="ml-3">
+            <a class="h5 mb-0" href="tel:8587078424">+91 8587078424</a>
 
-              <p class="small mb-0">Have a question? call us now</p>
-            </div>
+            <p class="small mb-0">Have a question? call us now</p>
           </div>
         </div>
-        <div class="col-lg-4 mb-5 mb-lg-0">
-          <div class="d-flex align-items-center">
-            <div class="contact-icon"><i class="far fa-envelope"></i></div>
-            <div class="ml-3">
-              <a href="mailto:d2dbikeservice@gmail.com" target="_blank">
-                <span class="mail-sent">
-                  d2dbikeservice&#64;gmail.com
-                </span>
-              </a>
-              <p class="small mb-0">Need support? Drop us an email</p>
-            </div>
+      </div>
+      <div class="col-lg-4 mb-5 mb-lg-0">
+        <div class="d-flex align-items-center">
+          <div class="contact-icon"><i class="far fa-envelope"></i></div>
+          <div class="ml-3">
+            <a href="mailto:d2dbikeservice@gmail.com" target="_blank">
+              <span class="mail-sent">
+                d2dbikeservice&#64;gmail.com
+              </span>
+            </a>
+            <p class="small mb-0">Need support? Drop us an email</p>
           </div>
         </div>
-        <div class="col-lg-4">
-          <div class="d-flex align-items-center">
-            <div class="contact-icon"><i class="far fa-clock"></i></div>
-            <div class="ml-3">
-              <h3 class="h5 mb-0">Fri – Wed 09:00 AM – 07:00 PM</h3>
-              <p class="small mb-0">We are open On</p>
-            </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="d-flex align-items-center">
+          <div class="contact-icon"><i class="far fa-clock"></i></div>
+          <div class="ml-3">
+            <h3 class="h5 mb-0">Fri – Wed 09:00 AM – 07:00 PM</h3>
+            <p class="small mb-0">We are open On</p>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>

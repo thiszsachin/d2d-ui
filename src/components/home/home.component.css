@@ -85,3 +85,19 @@ button:disabled{
   font-weight: 600;
   font-size: 20px;
 }
+.welcome-hindi{
+  background-color: rgb(243 228 82);
+  padding: 5px;
+  padding-top: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.welcome-hindi > h4, p{
+  text-align: center;
+}
+.city-text{
+  font-weight: 600;
+  color: #a57315;
+  font-size: 18px;
+}
